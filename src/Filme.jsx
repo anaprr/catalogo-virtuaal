@@ -15,7 +15,7 @@ function Filme() {
 
     function Filmes(evento){
         evento.preventDefault();
-        fetch("http://10.139.75.32:8080/filmes", {
+        fetch(process.env.REACT_APP_BACKEND + "filmes", {
             method:"POST",
             headers:{
                 'Content-Type':'application/json'
