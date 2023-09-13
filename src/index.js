@@ -5,8 +5,8 @@ import { createBrowserRouter, RouterProvider} from "react-router-dom";
 import Login from './Login';
 import Cadastro from './Cadastro'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
-import Filme from './Filme';
 import EditaFilme from './EditaFilme';
+import LivrosCadastro from './LivrosCadastro';
 
 
 const theme = createTheme({
@@ -40,8 +40,8 @@ const router = createBrowserRouter([
     element: <Cadastro/>
   },
   {
-    path:"/filme",
-    element: <Filme/>
+    path:"/livro",
+    element: <LivrosCadastro/>
   },
   {
     path:"/edicao/:id",

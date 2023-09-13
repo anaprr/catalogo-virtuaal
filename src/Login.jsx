@@ -1,10 +1,10 @@
-import { Alert, Box, Button, Checkbox, Container, FormControlLabel, Grid, TextField, Typography } from '@mui/material';
+import { Alert, Box, Button, Checkbox, Container, FormControlLabel, Grid, Link, TextField, Typography } from '@mui/material';
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { Navigate, json, useNavigate } from 'react-router-dom';
 
 /*A função só é executada se o login for verdadeiro*/
-function Login() {
+function Login(props) {
 
     const[email, setEmail ] = useState("");
     const[senha, setSenha ] = useState("");
@@ -71,7 +71,7 @@ function Login() {
                         Esqueci a senha
                     </Grid>
                     <Grid item>
-                        Cadastrar
+                        <Link href={"cadastro/"}>Cadastrar</Link>
                     </Grid>
                 </Grid>
             </Box>
