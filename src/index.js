@@ -6,6 +6,7 @@ import Login from './Login';
 import Cadastro from './Cadastro'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import Filme from './Filme';
+import EditaFilme from './EditaFilme';
 
 
 const theme = createTheme({
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
   {
     path:"/filme",
     element: <Filme/>
+  },
+  {
+    path:"/edicao/:id",
+    element: <EditaFilme/>
   }
 ]);
 
