@@ -1,4 +1,4 @@
-import { Alert, Autocomplete, Box, Button, Container, TextField, Typography } from '@mui/material';
+import { Alert, Autocomplete, Box, Button, Container, FormControl, Input, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import React, { useState, useEffect } from 'react'
 
 
@@ -12,6 +12,8 @@ function LivrosCadastro() {
     const [imagem,setImagem] = useState();
     const [enviar,setEnviar] = useState();
     const [erro,setErro] = useState();
+    const [age,setAge] = useState();
+
 
     function Filmes(evento){
         evento.preventDefault();
@@ -66,8 +68,17 @@ function LivrosCadastro() {
                 <TextField label="Sinopse" variant='filled'type='text'margin='normal'fullWidth value={sinopse}onChange={(e)=> setSinopse(e.target.value)}></TextField>
                 <TextField label="Ano" variant='filled'type='date'margin='normal'fullWidth value={ano}onChange={(e)=> setAno(e.target.value)}></TextField>
                 <TextField label="Páginas" variant='filled'type='text'margin='normal'fullWidth value={paginas}onChange={(e)=> setPaginas(e.target.value)}></TextField>
-                <TextField label="Categoria"variant='filled'type='text'margin='normal'fullWidth value={categoria} onChange={(e)=> setCategoria(e.target.value)}></TextField>
-                <TextField label="Insira seu link" variant='filled'type='text'margin='normal'fullWidth value={imagem}onChange={(e)=> setImagem(e.target.value)}></TextField>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label"> Categoria</InputLabel>
+                    <Select labelId="demo-simple-select-label" id="demo-simple-select"value={categoria} label="Age"onChange={(e)=> setCategoria(e.target.value)}>
+                        <MenuItem value={10}>Fantasia</MenuItem>
+                        <MenuItem value={20}>Ficção científica</MenuItem>
+                        <MenuItem value={30}>Romance</MenuItem>
+                        <MenuItem value={40}>Distopia</MenuItem>
+                        <MenuItem value={50}>Aventura</MenuItem>
+                    </Select>
+                </FormControl>
+                <TextField label="Insira o url do livro" variant='filled'type='text'margin='normal'fullWidth value={imagem}onChange={(e)=> setImagem(e.target.value)}></TextField>
                 <Button type='submit' variant="contained" color="secondary" fullWidth sx={{mt:2, mb:2}}>Enviar</Button>
             </Box>
         </Box>

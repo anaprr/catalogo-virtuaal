@@ -1,6 +1,7 @@
 import { Avatar, Button, Container } from "@mui/material";
 import { useEffect, useState } from "react";
 import Filmes from "./components/Filmes";
+import MenuResponsivo from "./components/MenuResponsivo";
 
 function App() {
     const[filmes, setFilmes] = useState();
@@ -44,7 +45,7 @@ function App() {
 
   return (
     <>
-    <h1>Filmes</h1>
+    <MenuResponsivo />
     <Container sx={{
       display:"flex",
       flexFlow:"row",

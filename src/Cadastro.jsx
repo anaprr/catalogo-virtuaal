@@ -2,6 +2,7 @@ import { Alert, Box, Button, Container, TextField, Typography } from '@mui/mater
 import React, { useState, useEffect } from 'react'
 
 
+
 function Cadastro() {
     const[email, setEmail ] = useState("");
     const[senha, setSenha ] = useState("");
@@ -51,7 +52,7 @@ function Cadastro() {
         /*setCadastro(false) */
     },[cadastro]);
   return (
-    <Container component="section" maxWidth = "xs">
+    <Container component="section" maxWidth = "sm">
         <Box sx={{mt:10, backgroundColor:"#D3A5F0", padding:"50px", borderRadius:"10px", display:"flex", flexDirection:"column", alignItems:"center"}}>
         <Typography component="h1" variant='h5'>Cadastro</Typography>
             {erro && (<Alert severity="warning">Desculpe tente novamente</Alert>)}

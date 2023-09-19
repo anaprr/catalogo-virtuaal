@@ -1,8 +1,8 @@
-import { Alert, Box, Button, Container, TextField } from '@mui/material'
+import { Alert, Box, Button, Container, FormControl, InputLabel, MenuItem, Select, TextField,  } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
-function EditaFilme() {
+function EditaLivro() {
 
     const{ id } = useParams();
 
@@ -75,7 +75,7 @@ function EditaFilme() {
 
   return (
     <>
-        <Container component="section" maxWidth = "xs">
+        <Container component="section" maxWidth = "sm">
             <Box sx={{mt:10, backgroundColor:"#D3A5F0", padding:"50px", borderRadius:"10px", display:"flex", flexDirection:"column", alignItems:"center"}}>
             {erro && (<Alert severity='warning'>{erro}</Alert>)}
             {editar && (<Alert severity='success'>Filme editado com sucesso</Alert>)}
@@ -84,7 +84,16 @@ function EditaFilme() {
                     <TextField label="Descrição" variant='filled'type='text'margin='normal'fullWidth value={descricao}onChange={(e)=> setDescricao(e.target.value)}></TextField>
                     <TextField label="Ano" variant='filled'type='date'margin='normal'fullWidth value={ano}onChange={(e)=> setAno(e.target.value)}></TextField>
                     <TextField label="Duração" variant='filled'type='text'margin='normal'fullWidth value={duracao}onChange={(e)=> setDuracao(e.target.value)}></TextField>
-                    <TextField label="Categoria" variant='filled'type='text'margin='normal'fullWidth value={categoria}onChange={(e)=> setCategoria(e.target.value)}></TextField>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label"> Categoria</InputLabel>
+                    <Select labelId="demo-simple-select-label" id="demo-simple-select"value={categoria} label="Age"onChange={(e)=> setCategoria(e.target.value)}>
+                        <MenuItem value={10}>Fantasia</MenuItem>
+                        <MenuItem value={20}>Ficção científica</MenuItem>
+                        <MenuItem value={30}>Romance</MenuItem>
+                        <MenuItem value={40}>Distopia</MenuItem>
+                        <MenuItem value={50}>Aventura</MenuItem>
+                    </Select>
+                </FormControl>
                     <TextField label="Insira seu link" variant='filled'type='text'margin='normal'fullWidth value={imagem}onChange={(e)=> setImagem(e.target.value)}></TextField>
                     <Button type='submit' variant="contained" color="secondary" fullWidth sx={{mt:2, mb:2}}>Editar</Button>
                 </Box>
@@ -94,4 +103,4 @@ function EditaFilme() {
   )
 }
 
-export default EditaFilme;
+export default EditaLivro;

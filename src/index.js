@@ -5,8 +5,8 @@ import { createBrowserRouter, RouterProvider} from "react-router-dom";
 import Login from './Login';
 import Cadastro from './Cadastro'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
-import EditaFilme from './EditaFilme';
 import LivrosCadastro from './LivrosCadastro';
+import EditaLivro from './EditaLivro';
 
 
 const theme = createTheme({
@@ -17,7 +17,7 @@ const theme = createTheme({
         light: '#c75ff5',
       },
       secondary: {
-        main: '#c72ac5',
+        main: '#000',
       },
       background: {
         default: 'rgba(61,55,55,0.51)',
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
   },
   {
     path:"/edicao/:id",
-    element: <EditaFilme/>
+    element: <EditaLivro/>
   }
 ]);
 
