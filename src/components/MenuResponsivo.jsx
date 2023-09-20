@@ -72,9 +72,13 @@ function MenuResponsivo(props) {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: 'block', md: 'none' }
               }}>
-                 
+                 <Link href={"/livro"} sx={{color: 'black'}}>Livros</Link>
+                <br></br>
+                 <Link href={"/livro"} sx={{color: 'black'}}>Faça sua lista</Link>
+                 <br></br>
+                 <Link href={"/cadastro"} sx={{color: 'black'}}>Cadastre-se</Link>
                    <MenuItem  onClick={handleCloseNavMenu}>
                    <Typography textAlign="center"></Typography>
                  </MenuItem>
