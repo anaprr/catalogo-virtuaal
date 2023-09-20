@@ -104,17 +104,17 @@ function MenuResponsivo(props) {
                     <Button
                       onClick={handleCloseNavMenu}
                       sx={{ my: 2, color: 'white', display: 'block' }}>
-                      <Link href={"/livro"} sx={{color: 'white'}}>Livros</Link>
+                      <Link href={"/livro"} sx={{color: 'black'}}>Livros</Link>
                     </Button>
                     <Button
                       onClick={handleCloseNavMenu}
                       sx={{ my: 2, color: 'white', display: 'block' }}>
-                      <Link href={"/livro"} sx={{color: 'white'}}>Faça sua lista</Link>
+                      <Link href={"/livro"} sx={{color: 'black'}}>Faça sua lista</Link>
                     </Button>
                     <Button
                       onClick={handleCloseNavMenu}
                       sx={{ my: 2, color: 'white', display: 'block' }}>
-                      <Link href={"/livro"} sx={{color: 'white'}}>Edite</Link>
+                      <Link href={"/cadastro"} sx={{color: 'black'}}>Cadastre-se</Link>
                     </Button>    
                 </Box>
           <Box sx={{ flexGrow: 0 }}>
@@ -145,6 +145,28 @@ function MenuResponsivo(props) {
              
             </Menu>
           </Box>
+          <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+             
+                <MenuItem  onClick={handleCloseUserMenu}>
+                  <Link  href={"/login"} sx={{color: 'black'}}>Entrar</Link>
+                </MenuItem>
+           
+            </Menu>
             </Toolbar>
         </Container>
     </AppBar>

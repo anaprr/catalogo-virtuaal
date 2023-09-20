@@ -1,14 +1,19 @@
 import { Avatar, Button, Container } from "@mui/material";
 import { useEffect, useState } from "react";
-import Filmes from "./components/Filmes";
 import MenuResponsivo from "./components/MenuResponsivo";
+import Livros from "./components/Livros";
 
 function App() {
     const[filmes, setFilmes] = useState();
     const[erro, setErro] = useState();
+    
+
 
     useEffect( () => {
-      fetch(process.env.REACT_APP_BACKEND + "filmes", {
+
+      const usuario= localStorage.getItem("usuario");
+
+      fetch(process.env.REACT_APP_BACKEND + "produtos/" + usuario, {
         method:"GET",
         headers:{
             'Content-Type':'application/json'
@@ -22,14 +27,15 @@ function App() {
 
     function Excluir(evento,id){
       evento.preventDefault();
-      fetch(process.env.REACT_APP_BACKEND + "filmes", {
+      fetch(process.env.REACT_APP_BACKEND + "produtos", {
         method:"DELETE",
         headers:{
             'Content-Type':'application/json'
         },
         body: JSON.stringify(
             {
-               id:id
+               id:id,
+               usuario: localStorage.getItem("usuario")
             }
         )
 
@@ -56,7 +62,7 @@ function App() {
     
     {filmes && (
       filmes.map((filme, index)=> (
-        <Filmes 
+        <Livros
         imagem={filme.imagem}
          titulo={filme.titulo} 
          descricao={filme.descricao}

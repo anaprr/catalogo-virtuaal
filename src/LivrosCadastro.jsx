@@ -5,9 +5,9 @@ import React, { useState, useEffect } from 'react'
 function LivrosCadastro() {
 
     const [titulo,setTitulo] = useState();
-    const [sinopse,setSinopse] = useState();
+    const [descricao,setDescricao] = useState();
     const [ano,setAno] = useState();
-    const [paginas,setPaginas] = useState();
+    const [duracao,setDuracao] = useState();
     const [categoria,setCategoria] = useState();
     const [imagem,setImagem] = useState();
     const [enviar,setEnviar] = useState();
@@ -17,7 +17,7 @@ function LivrosCadastro() {
 
     function Filmes(evento){
         evento.preventDefault();
-        fetch(process.env.REACT_APP_BACKEND + "filmes", {
+        fetch(process.env.REACT_APP_BACKEND + "produtos", {
             method:"POST",
             headers:{
                 'Content-Type':'application/json'
@@ -25,10 +25,11 @@ function LivrosCadastro() {
             body: JSON.stringify(
                 {
                     titulo: titulo,
-                    sinopse: sinopse,
+                    descricao: descricao,
                     ano: ano,
-                    paginas: paginas,
+                    duracao: duracao,
                     categoria: categoria,
+                    usuario: localStorage.getItem("usuario"),
                     imagem: imagem
                 }
             )
@@ -49,9 +50,9 @@ function LivrosCadastro() {
 
     useEffect( () => {
         setTitulo("");
-        setSinopse("");
+        setDescricao("");
         setAno("");
-        setPaginas("");
+        setDuracao("");
         setCategoria("");
         setImagem("");
         
@@ -65,19 +66,10 @@ function LivrosCadastro() {
             {enviar && (<Alert severity="success">Realizado com sucesso!</Alert>)}
             <Box component="form"onSubmit={Filmes}>
                 <TextField label="Titulo" variant='filled'type='text'margin='normal'fullWidth value={titulo}onChange={(e)=> setTitulo(e.target.value)}></TextField>
-                <TextField label="Sinopse" variant='filled'type='text'margin='normal'fullWidth value={sinopse}onChange={(e)=> setSinopse(e.target.value)}></TextField>
+                <TextField label="Sinopse" variant='filled'type='text'margin='normal'fullWidth value={descricao}onChange={(e)=> setDescricao(e.target.value)}></TextField>
                 <TextField label="Ano" variant='filled'type='date'margin='normal'fullWidth value={ano}onChange={(e)=> setAno(e.target.value)}></TextField>
-                <TextField label="Páginas" variant='filled'type='text'margin='normal'fullWidth value={paginas}onChange={(e)=> setPaginas(e.target.value)}></TextField>
-                <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label"> Categoria</InputLabel>
-                    <Select labelId="demo-simple-select-label" id="demo-simple-select"value={categoria} label="Age"onChange={(e)=> setCategoria(e.target.value)}>
-                        <MenuItem value={10}>Fantasia</MenuItem>
-                        <MenuItem value={20}>Ficção científica</MenuItem>
-                        <MenuItem value={30}>Romance</MenuItem>
-                        <MenuItem value={40}>Distopia</MenuItem>
-                        <MenuItem value={50}>Aventura</MenuItem>
-                    </Select>
-                </FormControl>
+                <TextField label="Páginas" variant='filled'type='text'margin='normal'fullWidth value={duracao}onChange={(e)=> setDuracao(e.target.value)}></TextField>
+                <TextField label="Categoria" variant='filled'type='text'margin='normal'fullWidth value={categoria}onChange={(e)=> setCategoria(e.target.value)}></TextField>
                 <TextField label="Insira o url do livro" variant='filled'type='text'margin='normal'fullWidth value={imagem}onChange={(e)=> setImagem(e.target.value)}></TextField>
                 <Button type='submit' variant="contained" color="secondary" fullWidth sx={{mt:2, mb:2}}>Enviar</Button>
             </Box>

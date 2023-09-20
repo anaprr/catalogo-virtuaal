@@ -16,9 +16,10 @@ function EditaLivro() {
     const [imagem,setImagem] = useState("");
     const [editar,setEditar] = useState(false);
     const [erro,setErro] = useState(false);
+    const usuario = localStorage.getItem("usuario")
 
     useEffect(() => {
-        fetch(process.env.REACT_APP_BACKEND + "filmes/" + id, {
+        fetch(process.env.REACT_APP_BACKEND + "produtos/" + usuario + "/" + id, {
             method:"GET",
             headers:{
                 'Content-Type':'application/json'
@@ -42,7 +43,7 @@ function EditaLivro() {
     }, [])
     function Editar(evento){
         evento.preventDefault();
-        fetch(process.env.REACT_APP_BACKEND + "filmes", {
+        fetch(process.env.REACT_APP_BACKEND + "produtos", {
             method:"PUT",
             headers:{
                 'Content-Type':'application/json'
@@ -84,16 +85,7 @@ function EditaLivro() {
                     <TextField label="Descrição" variant='filled'type='text'margin='normal'fullWidth value={descricao}onChange={(e)=> setDescricao(e.target.value)}></TextField>
                     <TextField label="Ano" variant='filled'type='date'margin='normal'fullWidth value={ano}onChange={(e)=> setAno(e.target.value)}></TextField>
                     <TextField label="Duração" variant='filled'type='text'margin='normal'fullWidth value={duracao}onChange={(e)=> setDuracao(e.target.value)}></TextField>
-                <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label"> Categoria</InputLabel>
-                    <Select labelId="demo-simple-select-label" id="demo-simple-select"value={categoria} label="Age"onChange={(e)=> setCategoria(e.target.value)}>
-                        <MenuItem value={10}>Fantasia</MenuItem>
-                        <MenuItem value={20}>Ficção científica</MenuItem>
-                        <MenuItem value={30}>Romance</MenuItem>
-                        <MenuItem value={40}>Distopia</MenuItem>
-                        <MenuItem value={50}>Aventura</MenuItem>
-                    </Select>
-                </FormControl>
+                    <TextField label="Categoria" variant='filled'type='text'margin='normal'fullWidth value={categoria}onChange={(e)=> setCategoria(e.target.value)}></TextField>
                     <TextField label="Insira seu link" variant='filled'type='text'margin='normal'fullWidth value={imagem}onChange={(e)=> setImagem(e.target.value)}></TextField>
                     <Button type='submit' variant="contained" color="secondary" fullWidth sx={{mt:2, mb:2}}>Editar</Button>
                 </Box>
